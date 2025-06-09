@@ -41,9 +41,12 @@ CREATE TRIGGER update_books_updated_at
     EXECUTE FUNCTION update_updated_at_column();
 
 INSERT INTO books (title, author, publication_year, isbn) VALUES
-    ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, '978-0-7432-7356-5'),
-    ('To Kill a Mockingbird', 'Harper Lee', 1960, '978-0-06-112008-4'),
-    ('1984', 'George Orwell', 1949, '978-0-452-28423-4'),
-    ('Pride and Prejudice', 'Jane Austen', 1813, '978-0-14-143951-8'),
-    ('The Catcher in the Rye', 'J.D. Salinger', 1951, '978-0-316-76948-0')
+    ('Naruto Vol. 1', 'Masashi Kishimoto', 1999, '978-1-4215-0085-8'),
+    ('One Piece Vol. 1', 'Eiichiro Oda', 1997, '978-1-4215-0901-1'),
+    ('Attack on Titan Vol. 1', 'Hajime Isayama', 2009, '978-1-61262-024-4'),
+    ('Death Note Vol. 1', 'Tsugumi Ohba', 2003, '978-1-4215-0168-8'),
+    ('Dragon Ball Vol. 1', 'Akira Toriyama', 1984, '978-1-4215-0187-9'),
+    ('My Hero Academia Vol. 1', 'Kohei Horikoshi', 2014, '978-1-4215-7180-6'),
+    ('Demon Slayer Vol. 1', 'Koyoharu Gotouge', 2016, '978-1-9747-0870-4'),
+    ('Tokyo Ghoul Vol. 1', 'Sui Ishida', 2011, '978-1-4215-7077-9')
 ON CONFLICT (isbn) DO NOTHING;
