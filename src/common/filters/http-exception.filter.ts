@@ -13,6 +13,7 @@ import {
     private readonly logger = new Logger(AllExceptionsFilter.name);
   
     catch(exception: unknown, host: ArgumentsHost): void {
+      console.log("unknown exception", exception)
       const ctx = host.switchToHttp();
       const response = ctx.getResponse<Response>();
       const request = ctx.getRequest<Request>();

@@ -1,0 +1,35 @@
+@baseUrl = http://localhost:3000/api/v1
+
+### Get All Books
+GET {{baseUrl}}/books?page=1&limit=10
+
+### Get One Book (ID = 1)
+GET {{baseUrl}}/books/1
+
+### Create a New Manga Book
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+  "title": "Jujutsu Kaisen Vol. 1",
+  "author": "Gege Akutami",
+  "publication_year": 2018,
+  "isbn": "978-1-9747-1047-9"
+}
+
+### Update a Book
+PATCH {{baseUrl}}/books/4
+Content-Type: application/json
+
+{
+  "publication_year": 2000
+}
+
+### Search for Books
+GET {{baseUrl}}/books/search?title=naruto
+
+### Count Books by Year
+GET {{baseUrl}}/books/count-by-year/1999
+
+### Delete a Book
+DELETE {{baseUrl}}/books/2

@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS books (
+DROP TABLE IF EXISTS books CASCADE;
+
+CREATE TABLE books (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     author VARCHAR(255) NOT NULL,
@@ -27,6 +29,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+
 CREATE OR REPLACE FUNCTION update_updated_at_column()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -34,6 +37,8 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS update_books_updated_at ON books;
 
 CREATE TRIGGER update_books_updated_at
     BEFORE UPDATE ON books

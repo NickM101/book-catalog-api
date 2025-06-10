@@ -10,6 +10,11 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
   private pool: Pool;
 
   constructor(private configService: ConfigService) {
+    console.log('DB_HOST:', this.configService.get<string>('DB_HOST'));
+    console.log('DB_PORT:', this.configService.get<number>('DB_PORT'));
+    console.log('DB_USERNAME:', this.configService.get<string>('DB_USERNAME'));
+    console.log('DB_PASSWORD:', this.configService.get<string>('DB_PASSWORD'));
+    console.log('DB_NAME:', this.configService.get<string>('DB_NAME'));
     this.pool = new Pool({
       host: this.configService.get<string>('DB_HOST'),
       port: this.configService.get<number>('DB_PORT'),
@@ -62,7 +67,7 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
 
   private async runMigrations() {
     try {
-      const migrationPath = path.join(__dirname, 'migrations', 'init.sql');
+      const migrationPath = path.join(process.cwd(), 'src', 'database', 'migrations', 'init.sql');
       const migrationSQL = fs.readFileSync(migrationPath, 'utf8');
       
       await this.pool.query(migrationSQL);
